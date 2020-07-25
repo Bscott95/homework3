@@ -1,19 +1,6 @@
 // creates variable generateBtn to use addEventListener method at end of code.
 var generateBtn = document.querySelector("#generate");
 
-// Takes in a string that includes what characters will be used to create the password from the charType function. Takes in an int that defines how long the password will be from the passwordLength function. Generates and returns a random password.
-function generatePassword(str,passLength){
-  var pass = '';
-
-  for(i=0; i<passLength; i++){
-    var pos = Math.floor(Math.random() * str.length);
-    char = str.charAt(pos)
-    pass = pass + char;
-  }
-
-  return pass
-}
-
 // calls a series of functions to generate a password. Writes the password to the #password input
 function writePassword() {
   var str = charType(); 
@@ -22,18 +9,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-}
-
-// Asks how long the user wants the password to be. Checks to make sure it falls between 8 and 128. Returns an int variable with the length of the password.
-function passwordLength(){
-  while (loop=true){
-    var passLength = prompt("How long would you like the password to be? Please choose between 8 and 128 characters.")
-    if (passLength >= 8 && passLength <= 128){
-      loop = false;
-      return passLength;
-    } else alert("That is an invalid response.")
-  }
 }
 
 // Asks a series of questions to gather paramaters on what kind of characters should be included in the password. Loops until at least one set of characters is included. Returns a string that contains all the characters that will be used to generate a pasword.
@@ -80,10 +55,30 @@ function charType() {
   }
 }
 
+// Asks how long the user wants the password to be. Checks to make sure it falls between 8 and 128. Returns an int variable with the length of the password.
+function passwordLength(){
+  while (loop=true){
+    var passLength = prompt("How long would you like the password to be? Please choose between 8 and 128 characters.")
+    if (passLength >= 8 && passLength <= 128){
+      loop = false;
+      return passLength;
+    } else alert("That is an invalid response.")
+  }
+}
+
+// Takes in a string that includes what characters will be used to create the password from the charType function. Takes in an int that defines how long the password will be from the passwordLength function. Generates and returns a random password.
+function generatePassword(str,passLength){
+  var pass = '';
+
+  for(i=0; i<passLength; i++){
+    var pos = Math.floor(Math.random() * str.length);
+    char = str.charAt(pos)
+    pass = pass + char;
+  }
+
+  return pass
+}
+
 // Add event listener to generate button. Links to var generateBtn on line 2 which selects the #generate ID. When clicked, runs the writePassword function.
 generateBtn.addEventListener("click", writePassword);
-
-
-
-
 
