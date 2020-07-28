@@ -41,7 +41,7 @@ function charType() {
     // checks if user wants to include special characters and adds it to str if they do.
     var includeSchar = confirm("Do you want to include special characters?")
     if(includeSchar == true){
-      str = str + '~!@#$%^&*<>'
+      str = str + ' !"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
       count++
     }
 
